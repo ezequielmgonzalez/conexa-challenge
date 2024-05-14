@@ -1,8 +1,9 @@
 import { useState } from "react";
 import CharacterPagination from "./CharacterPagination";
 import CharactersList from "./CharactersList";
-import type { Character } from "../types/Character";
+import type { Character } from "../types/ApiTypes";
 import useCharacters from "../hooks/useCharacters";
+import CharacterEpisodesList from "./CharacterEpisodesList";
 
 interface CharacterSelectorProps {
 	borderSelected: string;
@@ -17,8 +18,9 @@ export default function CharacterSelector({
 		useState<Character | null>(null);
 
 	const handleCardClick = (character: Character) => {
-		console.log("Handleando el card click, new selectted: ", character);
-		setCharacterSelected(character);
+		if (character.id !== characterSelected?.id) {
+			setCharacterSelected(character);
+		}
 	};
 
 	return (
@@ -36,6 +38,9 @@ export default function CharacterSelector({
 				}
 				borderSelected={borderSelected}
 			/>
+			{characterSelected && (
+				<CharacterEpisodesList character={characterSelected} />
+			)}
 		</section>
 	);
 }
