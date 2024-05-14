@@ -1,19 +1,14 @@
-import type { ApiResponse, Character } from "../types/Character";
+import type { ApiResponse } from "../types/Character";
 
-export async function getAllCharacters(): Promise<Character[]> {
-	const results: Character[] = [];
-	let nextUrl: string | null = "https://rickandmortyapi.com/api/character";
+export async function getCharacters(page: number): Promise<ApiResponse | null> {
+	const url = `https://rickandmortyapi.com/api/character?page=${page}`;
+	let data: ApiResponse | null = null;
 	try {
-		while (nextUrl) {
-			const res = await fetch(nextUrl);
-			const jsonData = (await res.json()) as ApiResponse;
-
-			results.push(...jsonData.results);
-			nextUrl = jsonData.info.next;
-		}
+		const res = await fetch(url);
+		data = await res.json();
 	} catch (error) {
 		console.error("Error fetching characters:", error);
 	}
 
-	return results;
+	return data;
 }
