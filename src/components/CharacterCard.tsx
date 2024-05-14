@@ -1,4 +1,4 @@
-import type { Character } from "@/src/types/Character";
+import type { Character } from "@/src/types/ApiTypes";
 
 interface CharacterCardProps {
 	character: Character;

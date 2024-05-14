@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Character } from "../types/Character";
+import { Character } from "../types/ApiTypes";
 import { getCharacters } from "../services/api";
 
 export default function useCharacters() {

@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Character } from "../types/Character";
+import { Character } from "../types/ApiTypes";
 import CharacterCard from "./CharacterCard";
 
 interface CharactersListProps {
