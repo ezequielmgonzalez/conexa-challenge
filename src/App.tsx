@@ -1,10 +1,10 @@
-import CharactersList from "./components/CharactersList";
+import DualCharactersList from "./components/DualCharactersList";
 
 function App() {
 	return (
 		<>
 			<h1>Rick and Morty App!</h1>
-			<CharactersList />
+			<DualCharactersList />
 		</>
 	);
 }
