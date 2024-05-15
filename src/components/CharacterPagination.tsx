@@ -23,7 +23,14 @@ export default function CharacterPagination({
 		<Pagination>
 			<PaginationContent>
 				<PaginationItem>
-					<PaginationPrevious onClick={() => handlePage(page - 1)} />
+					<PaginationPrevious
+						onClick={() => handlePage(page - 1)}
+						className={
+							page == 1
+								? "pointer-events-none opacity-50"
+								: undefined
+						}
+					/>
 				</PaginationItem>
 				<PaginationItem>
 					<PaginationLink
@@ -37,7 +44,7 @@ export default function CharacterPagination({
 					<>
 						{page > 2 && (
 							<PaginationItem>
-								<PaginationEllipsis />
+								<PaginationEllipsis className="cursor-not-allowed" />
 							</PaginationItem>
 						)}
 						{page < totalPages && (
@@ -49,7 +56,7 @@ export default function CharacterPagination({
 				)}
 				{page < totalPages - 1 && (
 					<PaginationItem>
-						<PaginationEllipsis />
+						<PaginationEllipsis className="cursor-not-allowed" />
 					</PaginationItem>
 				)}
 
@@ -62,7 +69,14 @@ export default function CharacterPagination({
 					</PaginationLink>
 				</PaginationItem>
 				<PaginationItem>
-					<PaginationNext onClick={() => handlePage(page + 1)} />
+					<PaginationNext
+						onClick={() => handlePage(page + 1)}
+						className={
+							page == totalPages
+								? "pointer-events-none opacity-50"
+								: undefined
+						}
+					/>
 				</PaginationItem>
 			</PaginationContent>
 		</Pagination>

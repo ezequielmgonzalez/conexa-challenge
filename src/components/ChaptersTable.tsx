@@ -26,7 +26,7 @@ export default function ChaptersTable() {
 			<Accordion
 				type="single"
 				collapsible
-				className={`fixed bottom-0 bg-green-200 w-full max-h-[40%] overflow-auto transition-transform duration-1000 transform ${
+				className={`font-mono fixed bottom-0 bg-green-200 w-full max-h-[40%] overflow-auto transition-transform duration-1000 transform ${
 					isVisible ? "translate-y-0" : "translate-y-full"
 				}`}
 			>

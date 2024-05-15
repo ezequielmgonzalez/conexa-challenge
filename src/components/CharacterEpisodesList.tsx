@@ -9,7 +9,7 @@ export default function CharacterEpisodesList({
 	character,
 }: CharacterEpisodesListProps) {
 	const episodeUrls = character?.episode ?? [];
-	const { episodes } = useEpisodes(episodeUrls);
+	const { episodes, loading } = useEpisodes(episodeUrls);
 
 	return (
 		<div>
@@ -19,19 +19,23 @@ export default function CharacterEpisodesList({
 						{character.name} Episodes:
 					</h2>
 					<ul>
-						{episodes.map((episode) => (
-							<li key={episode.id} className="pb-3">
-								<span className="text-lg">
-									<strong>{episode.episode}</strong> -{" "}
-									<span className="italic">
-										{episode.name}
+						{!loading ? (
+							episodes.map((episode) => (
+								<li key={episode.id} className="pb-3">
+									<span className="text-lg">
+										<strong>{episode.episode}</strong> -{" "}
+										<span className="italic">
+											{episode.name}
+										</span>
 									</span>
-								</span>
-								<br />
-								<strong>Air Date: </strong>
-								{episode.air_date}
-							</li>
-						))}
+									<br />
+									<strong>Air Date: </strong>
+									{episode.air_date}
+								</li>
+							))
+						) : (
+							<p>Loading...</p>
+						)}
 					</ul>
 				</>
 			) : (

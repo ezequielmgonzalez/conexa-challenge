@@ -8,6 +8,7 @@ export default function DualCharactersList() {
 	return (
 		<section className="flex flex-row justify-center">
 			<CharacterSelector
+				title={"Select Character #1: "}
 				borderSelected="red"
 				handleSelectedCharacter={(newChar) =>
 					handleCharacterSelected(newChar, 0)
@@ -15,6 +16,7 @@ export default function DualCharactersList() {
 				selected={charactersSelected[0]?.id}
 			/>
 			<CharacterSelector
+				title={"Select Character #2: "}
 				borderSelected="blue"
 				handleSelectedCharacter={(newChar) =>
 					handleCharacterSelected(newChar, 1)

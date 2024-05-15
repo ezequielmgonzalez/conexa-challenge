@@ -22,7 +22,7 @@ export default function CharacterSharedEpisodesList({
 		setSharedUrls(newSharedUrls);
 	}, [characters]);
 
-	const { episodes } = useEpisodes(sharedUrls);
+	const { episodes, loading } = useEpisodes(sharedUrls);
 
 	return (
 		<div>
@@ -49,19 +49,23 @@ export default function CharacterSharedEpisodesList({
 						))}
 					</h2>
 					<ul>
-						{episodes.map((episode) => (
-							<li key={episode.id} className="pb-3">
-								<span className="text-lg">
-									<strong>{episode.episode}</strong> -{" "}
-									<span className="italic">
-										{episode.name}
+						{!loading ? (
+							episodes.map((episode) => (
+								<li key={episode.id} className="pb-3">
+									<span className="text-lg">
+										<strong>{episode.episode}</strong> -{" "}
+										<span className="italic">
+											{episode.name}
+										</span>
 									</span>
-								</span>
-								<br />
-								<strong>Air Date: </strong>
-								{episode.air_date}
-							</li>
-						))}
+									<br />
+									<strong>Air Date: </strong>
+									{episode.air_date}
+								</li>
+							))
+						) : (
+							<p>Loading...</p>
+						)}
 					</ul>
 				</>
 			) : (
