@@ -14,14 +14,17 @@ export function useEpisodes(urls: string[]) {
 		if (episodeNumbers.length > 0) {
 			setLoading(true);
 			setError(null);
-			getMultipleEpisodes(episodeNumbers)
-				.then((newData) => {
+			const fetchEpisodes = async () => {
+				try {
+					const newData = await getMultipleEpisodes(episodeNumbers);
 					setEpisodes(newData);
-				})
-				.catch((e) => {
+					setLoading(false);
+				} catch (e) {
 					if (e instanceof Error) setError(e.message);
-				})
-				.finally(() => setLoading(false));
+				}
+			};
+
+			fetchEpisodes();
 		} else {
 			setEpisodes([]);
 		}

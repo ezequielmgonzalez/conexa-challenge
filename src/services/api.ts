@@ -9,7 +9,9 @@ export async function getCharacters(
 		const res = await fetch(url);
 		data = await res.json();
 	} catch (error) {
-		console.error("Error fetching characters:", error);
+		let message = "";
+		if (error instanceof Error) message = error.message;
+		throw new Error("Error fetching characters: " + message);
 	}
 
 	return data;

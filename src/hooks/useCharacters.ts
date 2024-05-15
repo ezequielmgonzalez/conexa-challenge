@@ -13,18 +13,35 @@ export default function useCharacters() {
 		setPage(newPage);
 	};
 
+	const memoizedGetCharacters = async (pageNum: number) => {
+		const cacheKey = `page_${pageNum}`;
+		if (localStorage.getItem(cacheKey)) {
+			return JSON.parse(localStorage.getItem(cacheKey)!);
+		} else {
+			try {
+				const newData = await getCharacters(pageNum);
+				localStorage.setItem(cacheKey, JSON.stringify(newData));
+				return newData;
+			} catch (e) {
+				throw new Error("Failed to fetch data");
+			}
+		}
+	};
+
 	useEffect(() => {
 		setLoading(true);
 		setError(null);
-		getCharacters(page)
+		memoizedGetCharacters(page)
 			.then((newData) => {
-				setTotalPages(newData?.info.pages);
-				if (newData?.results) {
+				if (newData) {
+					setTotalPages(newData.info.pages);
 					setCharacters(newData.results);
+				} else {
+					throw new Error("Failed to fetch data");
 				}
 			})
-			.catch((e) => {
-				if (e instanceof Error) setError(e.message);
+			.catch((e: Error) => {
+				setError(e.message);
 			})
 			.finally(() => setLoading(false));
 	}, [page]);
