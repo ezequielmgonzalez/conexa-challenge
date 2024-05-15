@@ -28,3 +28,9 @@ Basically, the characters on the list and the selected characters by the user sh
 Also, I found that some calculations like the shared episodes should be memoized (with the hook _useMemo_) to make the app faster and improve its performance.
 
 Lastly, I have made the app in a way that mobiles can still look at it and have their UI elements visible. The app is better on desktop because of the high visiblity of all components.
+
+## Features that can be added
+
+To make the user have a better experience, this features can work great:
+1. Search bar for characters.
+2. Infinite scrolling instead of the pagination numbers.
