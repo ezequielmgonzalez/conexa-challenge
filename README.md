@@ -10,7 +10,7 @@ All this data is gotten via [Rick & Morty's API](https://rickandmortyapi.com/)
 The bundler used was Vite and the frontend was made with React and Typescript. Also used some components from [shadcn/ui](https://ui.shadcn.com/docs). 
 
 ## Deployment
-[Check the demo here!]((https://ezequielmgonzalez-conexa.vercel.app )
+[Check the demo here!](https://ezequielmgonzalez-conexa.vercel.app)
 
 ## Running this project locally
 To run the application in a local environment:
