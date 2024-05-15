@@ -36,7 +36,7 @@ export default function CharacterCard({
 				className={`shadow-sm bg-white cursor-pointer rounded-xl overflow-hidden border-2 ${
 					selected ? borderColorClass : ""
 				} hover:shadow-md transform transition duration-500 
-				hover:scale-110 `}
+				hover:scale-110 min-h-[250px]`}
 				onClick={(e) => {
 					e.preventDefault();
 					if (onClick != undefined) onClick(character);

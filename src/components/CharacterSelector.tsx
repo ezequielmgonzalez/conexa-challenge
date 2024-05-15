@@ -29,10 +29,10 @@ export default function CharacterSelector({
 
 	return (
 		<section className="flex flex-col justify-center w-full gap-4 pt-2 max-w-[40%]">
-			<div className="flex flex-row items-center justify-between px-8 font-mono">
+			<div className="flex flex-col xl:flex-row items-center justify-center xl:justify-between px-8 font-mono gap-y-2">
 				<h3 className="align-middle">{title}</h3>
 
-				<div className="self-end">
+				<div className="xl:self-end">
 					<CharacterPagination
 						page={page}
 						totalPages={totalPages ?? 1}

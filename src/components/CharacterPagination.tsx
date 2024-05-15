@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
 	Pagination,
 	PaginationContent,
@@ -19,6 +20,19 @@ export default function CharacterPagination({
 	totalPages,
 	handlePage,
 }: CharacterPaginationProps) {
+	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth <= 768);
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
 	return (
 		<Pagination>
 			<PaginationContent>
@@ -32,15 +46,23 @@ export default function CharacterPagination({
 						}
 					/>
 				</PaginationItem>
-				<PaginationItem>
-					<PaginationLink
-						isActive={page == 1}
-						onClick={() => handlePage(1)}
-					>
-						1
-					</PaginationLink>
-				</PaginationItem>
-				{page > 1 && (
+				{isMobile && (
+					<PaginationItem>
+						<PaginationLink isActive>{page}</PaginationLink>
+					</PaginationItem>
+				)}
+				{!isMobile && (
+					<PaginationItem>
+						<PaginationLink
+							isActive={page == 1}
+							onClick={() => handlePage(1)}
+						>
+							1
+						</PaginationLink>
+					</PaginationItem>
+				)}
+
+				{!isMobile && page > 1 && (
 					<>
 						{page > 2 && (
 							<PaginationItem>
@@ -54,20 +76,23 @@ export default function CharacterPagination({
 						)}
 					</>
 				)}
-				{page < totalPages - 1 && (
+				{!isMobile && page < totalPages - 1 && (
 					<PaginationItem>
 						<PaginationEllipsis className="cursor-not-allowed" />
 					</PaginationItem>
 				)}
 
-				<PaginationItem>
-					<PaginationLink
-						isActive={page == totalPages}
-						onClick={() => handlePage(totalPages)}
-					>
-						{totalPages}
-					</PaginationLink>
-				</PaginationItem>
+				{!isMobile && (
+					<PaginationItem>
+						<PaginationLink
+							isActive={page == totalPages}
+							onClick={() => handlePage(totalPages)}
+						>
+							{totalPages}
+						</PaginationLink>
+					</PaginationItem>
+				)}
+
 				<PaginationItem>
 					<PaginationNext
 						onClick={() => handlePage(page + 1)}
