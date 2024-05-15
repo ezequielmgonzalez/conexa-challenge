@@ -16,13 +16,13 @@ export default function CharacterEpisodesList({
 			{character ? (
 				<>
 					<h2>{character.name} Episodes:</h2>
-					<ul></ul>
-					{episodes.length > 0 &&
-						episodes.map((episode) => (
+					<ul>
+						{episodes.map((episode) => (
 							<li key={episode.id}>
 								{episode.episode} - {episode.name}
 							</li>
 						))}
+					</ul>
 				</>
 			) : (
 				<h3>None character selected!</h3>
