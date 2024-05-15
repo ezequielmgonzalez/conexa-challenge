@@ -34,13 +34,13 @@ export default function ChaptersTable() {
 					<AccordionTrigger className="text-center justify-center text-2xl">
 						Episodes
 					</AccordionTrigger>
-					<AccordionContent className="flex flex-row justify-between px-10">
-						<div className="basis-1/3">
+					<AccordionContent className="flex flex-col md:flex-row justify-between px-10 gap-y-4">
+						<div className="basis-full md:basis-1/3">
 							<CharacterEpisodesList
 								character={selectedCharacter1}
 							/>
 						</div>
-						<div className="basis-1/3 text-center">
+						<div className="basis-full md:basis-1/3 md:text-center">
 							<CharacterSharedEpisodesList
 								characters={[
 									selectedCharacter1,
@@ -48,7 +48,7 @@ export default function ChaptersTable() {
 								]}
 							/>
 						</div>
-						<div className="basis-1/3 text-end">
+						<div className="basis-full md:basis-1/3 md:text-end">
 							<CharacterEpisodesList
 								character={selectedCharacter2}
 							/>
