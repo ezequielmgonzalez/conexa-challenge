@@ -33,7 +33,7 @@ export default function CharacterCard({
 	return (
 		character?.status && (
 			<div
-				className={`shadow-sm bg-white flex flex-wrap cursor-pointer rounded-xl overflow-hidden border-2 ${
+				className={`shadow-sm bg-white cursor-pointer rounded-xl overflow-hidden border-2 ${
 					selected ? borderColorClass : ""
 				} hover:shadow-md transform transition duration-500 
 				hover:scale-110 `}
