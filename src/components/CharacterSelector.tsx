@@ -2,25 +2,22 @@ import CharacterPagination from "./CharacterPagination";
 import CharactersList from "./CharactersList";
 import type { Character } from "../types/ApiTypes";
 import useCharacters from "../hooks/useCharacters";
-
 interface CharacterSelectorProps {
 	borderSelected: string;
-	selectedCharacter: Character | null;
-	setSelectedCharacter: React.Dispatch<
-		React.SetStateAction<Character | null>
-	>;
+	handleSelectedCharacter: (newChar: Character) => void;
+	selected?: number;
 }
 
 export default function CharacterSelector({
 	borderSelected,
-	selectedCharacter,
-	setSelectedCharacter,
+	handleSelectedCharacter,
+	selected,
 }: CharacterSelectorProps) {
 	const { characters, page, totalPages, handlePage } = useCharacters();
 
 	const handleCardClick = (character: Character) => {
-		if (character.id !== selectedCharacter?.id) {
-			setSelectedCharacter(character);
+		if (character.id !== selected) {
+			handleSelectedCharacter(character);
 		}
 	};
 
@@ -33,7 +30,7 @@ export default function CharacterSelector({
 			/>
 			<CharactersList
 				characters={characters}
-				selected={selectedCharacter?.id}
+				selected={selected}
 				onCardClick={(character: Character) =>
 					handleCardClick(character)
 				}

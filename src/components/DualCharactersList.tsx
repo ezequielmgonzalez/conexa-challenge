@@ -1,34 +1,25 @@
-import { Character } from "../types/ApiTypes";
+import { useCharacterSelectionContext } from "../hooks/useCharacterSelectionContext";
 import CharacterSelector from "./CharacterSelector";
 
-interface DualCharacterListProps {
-	selectedCharacter1: Character | null;
-	selectedCharacter2: Character | null;
-	setSelectedCharacter1: React.Dispatch<
-		React.SetStateAction<Character | null>
-	>;
-	setSelectedCharacter2: React.Dispatch<
-		React.SetStateAction<Character | null>
-	>;
-}
+export default function DualCharactersList() {
+	const { charactersSelected, handleCharacterSelected } =
+		useCharacterSelectionContext();
 
-export default function DualCharactersList({
-	selectedCharacter1,
-	selectedCharacter2,
-	setSelectedCharacter1,
-	setSelectedCharacter2,
-}: DualCharacterListProps) {
 	return (
 		<section className="flex flex-row">
 			<CharacterSelector
 				borderSelected="red"
-				selectedCharacter={selectedCharacter1}
-				setSelectedCharacter={setSelectedCharacter1}
+				handleSelectedCharacter={(newChar) =>
+					handleCharacterSelected(newChar, 0)
+				}
+				selected={charactersSelected[0]?.id}
 			/>
 			<CharacterSelector
 				borderSelected="blue"
-				selectedCharacter={selectedCharacter2}
-				setSelectedCharacter={setSelectedCharacter2}
+				handleSelectedCharacter={(newChar) =>
+					handleCharacterSelected(newChar, 1)
+				}
+				selected={charactersSelected[1]?.id}
 			/>
 		</section>
 	);
