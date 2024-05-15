@@ -28,18 +28,38 @@ export default function CharacterSharedEpisodesList({
 		<div>
 			{episodes.length > 0 ? (
 				<>
-					<h2>
-						Shared Episodes Among:
-						{characters.map((character) => (
+					<h2 className="text-xl font-semibold pb-4">
+						Shared Episodes Among:{" "}
+						{characters.map((character, index) => (
 							<span key={`character-${character.id}`}>
-								{character.name},
+								{index === characters.length - 1 ? (
+									<>{character.name}</>
+								) : (
+									<>
+										{character.name}
+										{index === characters.length - 2 ? (
+											<>&nbsp;&amp;</>
+										) : (
+											","
+										)}
+										&nbsp;
+									</>
+								)}
 							</span>
 						))}
 					</h2>
 					<ul>
 						{episodes.map((episode) => (
-							<li key={`episode-${episode.id}`}>
-								{episode.episode} - {episode.name}
+							<li key={episode.id} className="pb-3">
+								<span className="text-lg">
+									<strong>{episode.episode}</strong> -{" "}
+									<span className="italic">
+										{episode.name}
+									</span>
+								</span>
+								<br />
+								<strong>Air Date: </strong>
+								{episode.air_date}
 							</li>
 						))}
 					</ul>

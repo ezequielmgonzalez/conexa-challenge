@@ -15,11 +15,21 @@ export default function CharacterEpisodesList({
 		<div>
 			{character ? (
 				<>
-					<h2>{character.name} Episodes:</h2>
+					<h2 className="text-xl font-semibold pb-4">
+						{character.name} Episodes:
+					</h2>
 					<ul>
 						{episodes.map((episode) => (
-							<li key={episode.id}>
-								{episode.episode} - {episode.name}
+							<li key={episode.id} className="pb-3">
+								<span className="text-lg">
+									<strong>{episode.episode}</strong> -{" "}
+									<span className="italic">
+										{episode.name}
+									</span>
+								</span>
+								<br />
+								<strong>Air Date: </strong>
+								{episode.air_date}
 							</li>
 						))}
 					</ul>

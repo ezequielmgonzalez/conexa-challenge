@@ -26,23 +26,33 @@ export default function ChaptersTable() {
 			<Accordion
 				type="single"
 				collapsible
-				className={`fixed bottom-0 bg-green-200 w-full max-h-[40%] overflow-auto transition-transform duration-500 transform ${
+				className={`fixed bottom-0 bg-green-200 w-full max-h-[40%] overflow-auto transition-transform duration-1000 transform ${
 					isVisible ? "translate-y-0" : "translate-y-full"
 				}`}
 			>
 				<AccordionItem value="item-1">
-					<AccordionTrigger className="text-center justify-center">
-						Chapters
+					<AccordionTrigger className="text-center justify-center text-2xl">
+						Episodes
 					</AccordionTrigger>
-					<AccordionContent className="flex flex-row justify-between">
-						<CharacterEpisodesList character={selectedCharacter1} />
-						<CharacterSharedEpisodesList
-							characters={[
-								selectedCharacter1,
-								selectedCharacter2,
-							]}
-						/>
-						<CharacterEpisodesList character={selectedCharacter2} />
+					<AccordionContent className="flex flex-row justify-between px-10">
+						<div className="basis-1/3">
+							<CharacterEpisodesList
+								character={selectedCharacter1}
+							/>
+						</div>
+						<div className="basis-1/3 text-center">
+							<CharacterSharedEpisodesList
+								characters={[
+									selectedCharacter1,
+									selectedCharacter2,
+								]}
+							/>
+						</div>
+						<div className="basis-1/3 text-end">
+							<CharacterEpisodesList
+								character={selectedCharacter2}
+							/>
+						</div>
 					</AccordionContent>
 				</AccordionItem>
 			</Accordion>
