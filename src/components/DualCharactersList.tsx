@@ -6,7 +6,7 @@ export default function DualCharactersList() {
 		useCharacterSelectionContext();
 
 	return (
-		<section className="flex flex-row">
+		<section className="flex flex-row justify-center">
 			<CharacterSelector
 				borderSelected="red"
 				handleSelectedCharacter={(newChar) =>

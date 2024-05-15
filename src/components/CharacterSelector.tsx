@@ -22,7 +22,7 @@ export default function CharacterSelector({
 	};
 
 	return (
-		<section>
+		<section className="flex flex-col justify-center w-full gap-6">
 			<CharacterPagination
 				page={page}
 				totalPages={totalPages ?? 1}

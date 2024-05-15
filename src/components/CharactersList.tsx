@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { Character } from "../types/ApiTypes";
 import CharacterCard from "./CharacterCard";
+import "./CharacterList.css";
 
 interface CharactersListProps {
 	characters: Character[];
@@ -18,7 +19,7 @@ export default function CharactersList({
 	const id = useId();
 
 	return (
-		<section className="flex flex-row flex-wrap gap-4">
+		<section className="cards">
 			{characters.map((character) => (
 				<CharacterCard
 					character={character}
