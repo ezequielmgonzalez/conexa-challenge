@@ -5,7 +5,7 @@ import CharacterSharedEpisodesList from "./CharacterSharedEpisodesList";
 import { useCharacterSelectionContext } from "../hooks/useCharacterSelectionContext";
 import { useEffect, useState } from "react";
 
-export default function ChaptersTable() {
+export default function EpisodesTable() {
 	const { charactersSelected } = useCharacterSelectionContext();
 	const selectedCharacter1 = charactersSelected[0];
 	const selectedCharacter2 = charactersSelected[1];
@@ -31,9 +31,12 @@ export default function ChaptersTable() {
 				}`}
 			>
 				<AccordionItem value="item-1">
-					<AccordionTrigger className="text-center justify-center text-2xl">
-						Episodes
-					</AccordionTrigger>
+					<div className="sticky top-0 z-10 bg-gradient-to-b from-green-200 from-75% to-transparent">
+						<AccordionTrigger className="text-center justify-center text-2xl ">
+							Episodes
+						</AccordionTrigger>
+					</div>
+
 					<AccordionContent className="flex flex-col md:flex-row justify-between px-10 gap-y-4">
 						<div className="basis-full md:basis-1/3">
 							<CharacterEpisodesList

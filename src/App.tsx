@@ -1,4 +1,4 @@
-import ChaptersTable from "./components/ChaptersTable";
+import EpisodesTable from "./components/EpisodesTable";
 import DualCharactersList from "./components/DualCharactersList";
 import { CharacterSelectionProvider } from "./context";
 
@@ -9,7 +9,7 @@ function App() {
 				Rick & Morty Character Tracker
 			</h1>
 			<DualCharactersList />
-			<ChaptersTable />
+			<EpisodesTable />
 		</CharacterSelectionProvider>
 	);
 }
